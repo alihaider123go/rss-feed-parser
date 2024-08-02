@@ -27,7 +27,7 @@
                                     <th ><strong> Sr# </strong></th>
                                     <th ><strong> Title </strong></th>
                                     <th ><strong> Feed Url </strong></th>
-                                    <th ><strong> Interval </strong></th>
+                                    <th ><strong> Interval </strong>(minutes)</th>
                                     <th ><strong> Alerts </strong></th>
                                     <th ><strong>  </strong></th>
                                 </tr>
@@ -38,7 +38,7 @@
                                         <td> {{$key + 1}} </td>
                                         <td class="text-truncate" style="max-width: 150px;"> {{$zaptap->title}} </td>
                                         <td class="text-truncate" style="max-width: 150px;"> {{$zaptap->feed_url}} </td>
-                                        <td> {{$zaptap->interval}} </td>
+                                        <td> {{$zaptap->interval}}</td>
                                         <td> 
                                             @foreach ($zaptap->alertActions as $key1 => $alertAction)
                                                 <span class="badge text-bg-success">{{ucfirst($alertAction->alert_type)}}</span>
