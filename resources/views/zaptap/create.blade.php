@@ -41,7 +41,7 @@
                                                 <label for="interval">Interval*</label>
                                                 <input type="number" class="form-control" id="interval" name="interval" placeholder="Enter Interval" value="{{ old('interval') }}">
                                                 <small id="intervalhelp" class="text-muted">
-                                                    In minutes (1 - 60)
+                                                    In minutes (0 - 60)
                                                 </small>
                                             </div>
                                         </div>
