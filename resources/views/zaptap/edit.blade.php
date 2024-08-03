@@ -42,7 +42,7 @@
                                                 <label for="interval">Interval*</label>
                                                 <input type="number" class="form-control" id="interval" name="interval" placeholder="Enter Interval" value="{{ old('interval', $zaptap['interval']) }}">
                                                 <small id="intervalhelp" class="text-muted">
-                                                    In minutes
+                                                    In minutes (1 - 60)
                                                 </small>
                                             </div>
                                         </div>
@@ -89,8 +89,8 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="mb-3">
-                                            <label for="slack-address">Email Address*</label>
-                                            <input type="text" class="form-control" id="slack-address" name="slack_address" placeholder="Enter Slack Address" value="{{ old('slack_address', $zaptap['slack_address']) }}">
+                                            <label for="slack-address">Slack Link*</label>
+                                            <input type="text" class="form-control" id="slack-address" name="slack_address" placeholder="Enter Slack Link" value="{{ old('slack_address', $zaptap['slack_address']) }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="slack-subject">Subject*</label>

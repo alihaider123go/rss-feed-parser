@@ -157,6 +157,16 @@ class ZapTapService
                     ];
                     Notification::route('mail', $email_action['to'])->notify(new PoolingTriggerNotification($alertData));
                 }
+                if(isset($slack_action)){
+                    $alertData = [
+                        'job_link'=>in_array("link", json_decode($slack_action['body_items']))?$feeds[0]['link']:null,
+                        'job_title'=>in_array("title", json_decode($slack_action['body_items']))?$feeds[0]['title']:null,
+                        'job_description'=>in_array("description", json_decode($slack_action['body_items']))?$feeds[0]['description']:null,
+                        'title'=>$zaptap['title'],
+                        'subject'=>$slack_action['subject'],
+                    ];
+                    Notification::route('slack', $slack_action['to'])->notify(new PoolingTriggerNotification($alertData));
+                }
                 return true;
             }
             foreach ($feeds as $key => $feed) {
@@ -174,7 +184,14 @@ class ZapTapService
                     Notification::route('mail', $email_action['to'])->notify(new PoolingTriggerNotification($alertData));
                 }
                 if(isset($slack_action)){
-                    // array_push($alerts,['type'=>'slack','item'=>$item]);
+                    $alertData = [
+                        'job_link'=>in_array("link", json_decode($slack_action['body_items']))?$feed['link']:null,
+                        'job_title'=>in_array("title", json_decode($slack_action['body_items']))?$feed['title']:null,
+                        'job_description'=>in_array("description", json_decode($slack_action['body_items']))?$feed['description']:null,
+                        'title'=>$zaptap['title'],
+                        'subject'=>$slack_action['subject'],
+                    ];
+                    Notification::route('slack', $slack_action['to'])->notify(new PoolingTriggerNotification($alertData));
                 }
 
             }

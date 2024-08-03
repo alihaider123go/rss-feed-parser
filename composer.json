@@ -8,6 +8,7 @@
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.9",
+        "laravel/slack-notification-channel": "^3.3",
         "laravel/tinker": "^2.9",
         "vedmant/laravel-feed-reader": "^1.6"
     },

@@ -31,6 +31,18 @@ class ZapTapTest extends Command
     public function handle()
     {
 
+
+        $alertData = [
+            'job_link'=>'https://www.upwork.com/jobs/VueJS-Engineer-PHP-Laravel-Bonus_~01719e5f5d4f05650d?source=rss',
+            'job_title'=>'VueJS Engineer (w PHP/Laravel as a Bonus) - Upwork',
+            'job_description'=>'Job Description',
+            'title'=>'Upwork Alert',
+            'subject'=>'Upwork Alert',
+        ];
+        Notification::route('slack', 'https://hooks.slack.com/services/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')->notify(new PoolingTriggerNotification($alertData));
+        dd(200);    
+
+
         // $result = ZapTapService::triggerZapTapAlertActions();
         // dd($result);
 
