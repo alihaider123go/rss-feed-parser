@@ -35,6 +35,17 @@ class ZapTapTest extends Command
         // dd($result);
 
 
+        // $url = 'https://www.upwork.com/jobs/Full-time-Laravel-Vue-Developers-Opportunity-Long-term-Opportunities_~012d641e96b30f2fc0?source=rss';
+        
+        // preg_match('/~(.*?)\?/', $url, $matches);
+        // dd($matches[1]??null);
+        
+
+        ZapTapService::triggerZapTapAlertActions();
+        dd(200);
+
+
+
         $zaptap = ZapTapService::testZapTap(1);
         dd($zaptap);
 

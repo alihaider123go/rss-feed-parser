@@ -195,13 +195,8 @@ class ZapTapService
     }
 
     public function getIdFromURL($url = ''){
-        $pattern = '/~([a-f0-9]{16})/';
-        preg_match($pattern, $url, $matches);
-        if (isset($matches[1])) {
-            return $matches[1];
-        } else {
-            return "";
-        }
+        preg_match('/~(.*?)\?/', $url, $matches);
+        return $matches[1] ?? "";
     }
 
     public function triggerZapTapAlertActions(){
