@@ -6,10 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Impersonate;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type'
     ];
 
     /**
@@ -48,6 +50,17 @@ class User extends Authenticatable
     public function poolingTriggers()
     {
         return $this->hasMany(PoolingTrigger::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->user_type == 'admin';
+    }
+
+
+    public function canImpersonate()
+    {
+        return $this->isAdmin();
     }
 
 }

@@ -16,6 +16,20 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @if(\Auth::User()->isAdmin())
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+                @impersonating($guard = null)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('impersonate.leave')" >
+                            {{ __('Leave impersonation') }}
+                        </x-nav-link>
+                    </div>
+                @endImpersonating
             </div>
 
             <!-- Settings Dropdown -->
