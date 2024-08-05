@@ -10,28 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">                
                     <div>
-                        <a href="{{ route('zaptaps.create') }}" class="btn btn-primary" role="button" aria-pressed="true">Add New</a>
-                        <table class="table table-striped table-hover table-reflow">
-                            <thead>
-                                <tr>
-                                    <th ><strong> Name: </strong></th>
-                                    <th ><strong> Surname: </strong></th>
-                                    <th ><strong> Email: </strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td> John </td>
-                                    <td> Doe </td>
-                                    <td> john.doe@email.com </td>
-                                </tr>
-                                <tr>
-                                    <td> Joane </td>
-                                    <td> Donald </td>
-                                    <td> jane@email.com </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        Dashboad                       
                     </div>
                 </div>
             </div>

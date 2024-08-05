@@ -19,8 +19,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif             
-                    <div>
-                        <table class="table table-striped table-hover table-reflow">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-reflow ">
                             <thead>
                                 <tr>
                                     <th ><strong> Sr#: </strong></th>

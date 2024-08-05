@@ -20,7 +20,7 @@
                         </div>
                     @endif
 
-                    <div>
+                    <div  class="table-responsive">
                         <table class="table table-striped table-hover table-reflow">
                             <thead>
                                 <tr>
@@ -41,9 +41,9 @@
                                         <td> {{$key + 1}} </td>
                                         <td class="text-truncate" style="max-width: 150px;">
                                             @if(\Auth::User()->isAdmin())
-                                                @if($user->id != \Auth::User()->id) 
+                                                @if($zaptap->user_id != \Auth::User()->id) 
                                                     @canImpersonate($gaurd = null) 
-                                                        <a href="{{ route('impersonate',$user->id) }}">{{$user->name}}</a>
+                                                        <a href="{{ route('impersonate',$zaptap->user_id) }}">{{$zaptap->user->name}}</a>
                                                     @endCanImpersonate
                                                 @else
                                                     {{$zaptap->user->name}}
