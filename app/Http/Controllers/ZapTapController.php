@@ -16,8 +16,9 @@ class ZapTapController extends Controller
      */
     public function index(): View
     {
+        $zaptaps = ZapTapService::getZapTaps(Auth::user()->isAdmin()?null:Auth::user()->id);
         return view('zaptap.index', [
-            'zaptaps' => ZapTapService::getZapTapByUserId(Auth::user()->id),
+            'zaptaps' => $zaptaps,
         ]);
     }
 
@@ -70,7 +71,7 @@ class ZapTapController extends Controller
     }
 
 
-  public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'feed_url' => 'required|url',

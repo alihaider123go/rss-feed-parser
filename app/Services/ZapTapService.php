@@ -83,6 +83,18 @@ class ZapTapService
 
 
 
+    public function getZapTaps($user_id = null)
+    {
+        if(isset($user_id)){
+            $user = User::find($user_id);
+            return $user->poolingTriggers;    
+        }
+        
+        $users = User::with('poolingTriggers')->get();        
+        return $users->pluck('poolingTriggers')->flatten();
+    }
+
+
 
     public function getZapTapByUserId($user_id)
     {

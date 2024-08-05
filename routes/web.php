@@ -22,6 +22,14 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('admin')->group(function () {
         Route::get('/users', [AdminController::class, 'allUsers'])->name('users');
+        Route::get('/user/create', [AdminController::class, 'create'])->name('user.create');
+        Route::get('/user/edit/{id}', [AdminController::class, 'edit'])->name('user.edit');
+        Route::post('/user/store', [AdminController::class, 'store'])->name('user.store');
+
+        Route::get('/user/password/update/{id}', [AdminController::class, 'showPasswordForm'])->name('user.password.update');
+        Route::post('/user/password/update/{id}', [AdminController::class, 'updatePassword'])->name('user.password.update');
+        Route::delete('/user/destroy/{id}', [AdminController::class, 'destroy'])->name('user.destroy');
+
     });
 
 

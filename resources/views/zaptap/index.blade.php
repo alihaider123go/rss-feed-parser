@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">                
-                    <h1>Your ZapTaps</h1>
+                    <h1>All ZapTaps</h1>
                     <div class="flex items-center justify-end">
                         <a href="{{ route('zaptap.create') }}" class="btn btn-primary" role="button" aria-pressed="true">Add New</a>
                     </div>
@@ -25,6 +25,9 @@
                             <thead>
                                 <tr>
                                     <th ><strong> Sr# </strong></th>
+                                    @if(\Auth::User()->isAdmin())
+                                        <th ><strong> User </strong></th>
+                                    @endif
                                     <th ><strong> Title </strong></th>
                                     <th ><strong> Feed Url </strong></th>
                                     <th ><strong> Interval </strong>(minutes)</th>
@@ -36,6 +39,9 @@
                                 @foreach ($zaptaps as $key => $zaptap)
                                     <tr>
                                         <td> {{$key + 1}} </td>
+                                        @if(\Auth::User()->isAdmin())
+                                            <td class="text-truncate" style="max-width: 150px;">{{$zaptap->user->name}}</td>
+                                        @endif
                                         <td class="text-truncate" style="max-width: 150px;"> {{$zaptap->title}} </td>
                                         <td class="text-truncate" style="max-width: 150px;"> {{$zaptap->feed_url}} </td>
                                         <td> {{$zaptap->interval}}</td>
