@@ -47,13 +47,14 @@
                                         <td> {{$user->email}} </td>
                                         <td>
                                             <div class="flex items-center justify-end">
-                                                <a class="btn btn-primary btn-sm " role="button" href="{{ route('user.edit',$user->id) }}">Edit</a>
-                                                <a class="btn btn-warning btn-sm ml-2" role="button" href="{{ route('user.password.update',$user->id) }}">Update Password</a>
-                                                <form action="{{ route('user.destroy',$user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this User?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>
-                                                </form>
+                                                @if($user->id != \Auth::User()->id)
+                                                    <form action="{{ route('user.destroy',$user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this User?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                                @endif
+                                                <a class="btn btn-warning btn-sm ml-2" role="button" href="{{ route('user.password.update',$user->id) }}">Update Password</a>    
                                             </div>
                                         </td>
                                     </tr>
