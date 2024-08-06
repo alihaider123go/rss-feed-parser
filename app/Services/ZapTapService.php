@@ -181,7 +181,35 @@ class ZapTapService
                 }
                 return true;
             }
+
+            if($zaptap->last_updated_job_id == null){
+                
+                if(isset($email_action)){
+                    $alertData = [
+                        'job_link'=>in_array("link", json_decode($email_action['body_items']))?$feeds[0]['link']:null,
+                        'job_title'=>in_array("title", json_decode($email_action['body_items']))?$feeds[0]['title']:null,
+                        'job_description'=>in_array("description", json_decode($email_action['body_items']))?$feeds[0]['description']:null,
+                        'title'=>$zaptap['title'],
+                        'subject'=>$email_action['subject'],
+                    ];
+                    Notification::route('mail', $email_action['to'])->notify(new PoolingTriggerNotification($alertData));
+                }
+                if(isset($slack_action)){
+                    $alertData = [
+                        'job_link'=>in_array("link", json_decode($slack_action['body_items']))?$feeds[0]['link']:null,
+                        'job_title'=>in_array("title", json_decode($slack_action['body_items']))?$feeds[0]['title']:null,
+                        'job_description'=>in_array("description", json_decode($slack_action['body_items']))?$feeds[0]['description']:null,
+                        'title'=>$zaptap['title'],
+                        'subject'=>$slack_action['subject'],
+                    ];
+                    Notification::route('slack', $slack_action['to'])->notify(new PoolingTriggerNotification($alertData));
+                }
+                $this->setLastUpdatedJobId($id,$feeds[0]['id']);
+                return true;
+            }
+
             foreach ($feeds as $key => $feed) {
+
                 if($zaptap->last_updated_job_id != null && $zaptap->last_updated_job_id == $feed['id']){
                     break;
                 }

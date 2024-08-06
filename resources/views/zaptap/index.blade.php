@@ -39,8 +39,8 @@
                                 @foreach ($zaptaps as $key => $zaptap)
                                     <tr>
                                         <td> {{$key + 1}} </td>
-                                        <td class="text-truncate" style="max-width: 150px;">
-                                            @if(\Auth::User()->isAdmin())
+                                        @if(\Auth::User()->isAdmin())
+                                            <td class="text-truncate" style="max-width: 150px;">
                                                 @if($zaptap->user_id != \Auth::User()->id) 
                                                     @canImpersonate($gaurd = null) 
                                                         <a href="{{ route('impersonate',$zaptap->user_id) }}">{{$zaptap->user->name}}</a>
@@ -48,8 +48,8 @@
                                                 @else
                                                     {{$zaptap->user->name}}
                                                 @endif
-                                            @endif
-                                        </td>    
+                                            </td>
+                                        @endif
                                         <td class="text-truncate" style="max-width: 150px;"> {{$zaptap->title}} </td>
                                         <td class="text-truncate" style="max-width: 150px;"> {{$zaptap->feed_url}} </td>
                                         <td> {{$zaptap->interval}}</td>

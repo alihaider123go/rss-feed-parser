@@ -2,7 +2,7 @@
 
 <a href="{{ $data['job_link'] }}">{{$data['job_link']}}</a>
 
-**Position:** {{ $data['job_title'] }}
+**Title:** {{ $data['job_title'] }}
 
 **Description:**  
 
