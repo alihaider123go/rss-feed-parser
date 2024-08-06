@@ -14,12 +14,13 @@ class PoolingTriggerNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     protected $data;
-
+    public $timeString;
     /**
      * Create a new notification instance.
      */
     public function __construct($data)
     {
+        $this->timeString = \Carbon\Carbon::now('Asia/Karachi')->toTimeString();
         $this->data = $data;
     }
 
@@ -39,7 +40,7 @@ class PoolingTriggerNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject($this->data['subject'])
+            ->subject($this->data['subject'] . ' :: '.$this->timeString)
             ->markdown('mail.pooling-trigger', ['data' => $this->data]);
     }
 
@@ -47,7 +48,7 @@ class PoolingTriggerNotification extends Notification implements ShouldQueue
     {
         
     return (new SlackMessage)
-        ->content($this->data['subject'])
+        ->content($this->data['subject'] . ' :: '.$timeString)
         ->attachment(function ($attachment) {
             $attachment->title($this->data['job_title'])
             ->content($this->data['job_link']);

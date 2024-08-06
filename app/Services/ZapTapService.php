@@ -146,6 +146,7 @@ class ZapTapService
                     'subject' => $alertAction->subject,
                     'body_items' => $alertAction->body_items
                 ];
+                break;
             }
             if($alertAction->alert_type == 'slack'){
                 $slack_action = [
@@ -153,6 +154,7 @@ class ZapTapService
                     'subject' => $alertAction->subject,
                     'body_items' => $alertAction->body_items
                 ];
+                break;
             }
         }
 
