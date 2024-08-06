@@ -7,6 +7,8 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link rel="icon" href="{{ asset('/assets/favicon.webp') }}" type="image/webp">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
