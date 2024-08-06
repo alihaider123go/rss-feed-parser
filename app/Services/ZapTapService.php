@@ -157,7 +157,7 @@ class ZapTapService
         }
 
         $feeds = $this->parseRssFeed($zaptap->feed_url);
-        if(isset($feeds)){
+        if(isset($feeds) && count($feeds)>0){
             if($test){
                 if(isset($email_action)){
                     $alertData = [
@@ -238,8 +238,9 @@ class ZapTapService
             if(!$test && count($feeds)>0){
                 $this->setLastUpdatedJobId($id,$feeds[0]['id']);
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
 

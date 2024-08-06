@@ -95,7 +95,8 @@ class ZapTapController extends Controller
     public function test($id)
     {
         $zaptap = ZapTapService::testZapTap($id);
-        return redirect()->route('dashboard')->with('success', 'ZapTap tested successfully!');
+        
+        return redirect()->route('dashboard')->with('success', $zaptap?'ZapTap tested successfully!':'No Feed! Try again later.');
     }
 
 
