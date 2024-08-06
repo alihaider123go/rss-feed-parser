@@ -11,6 +11,7 @@
         "laravel/framework": "^11.9",
         "laravel/slack-notification-channel": "^3.3",
         "laravel/tinker": "^2.9",
+        "rap2hpoutre/laravel-log-viewer": "^2.4",
         "vedmant/laravel-feed-reader": "^1.6"
     },
     "require-dev": {

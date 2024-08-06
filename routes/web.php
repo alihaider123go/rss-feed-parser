@@ -48,5 +48,8 @@ Route::middleware('auth', 'verified')->group(function () {
 
 
 
+Route::middleware(['auth', 'admin'])->get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
+
 
 require __DIR__.'/auth.php';
