@@ -31,7 +31,7 @@ class PoolingTriggerNotification extends Notification implements ShouldQueue
      */
     public function via(object $notifiable): array
     {
-        return ['mail','slack'];
+        return array_keys($notifiable->routes);    
     }
 
     /**
