@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\User;
 use Facades\Services\ZapTapService;
 use App\Notifications\PoolingTriggerNotification;
+use Illuminate\Support\Facades\Http;
 
 use Illuminate\Support\Facades\Notification;
 
@@ -30,8 +31,6 @@ class ZapTapTest extends Command
      */
     public function handle()
     {
-
-
         $alertData = [
             'job_link'=>'https://www.upwork.com/jobs/VueJS-Engineer-PHP-Laravel-Bonus_~01719e5f5d4f05650d?source=rss',
             'job_title'=>'VueJS Engineer (w PHP/Laravel as a Bonus) - Upwork',
